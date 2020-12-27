@@ -17,8 +17,11 @@ const nums: number[] = process.argv[2]
   .map((string) => parseInt(string));
 const target: number = parseInt(process.argv[3]);
 
-console.log(twoSum(nums, target));
-
+/**
+ * node.js v11以前はArray.flatメソッドが無いため自前で実装
+ * @param arr 対象配列
+ * @param d 平坦化するレベル
+ */
 function flatDeep(arr, d = 1) {
   return d > 0
     ? arr.reduce(
@@ -48,3 +51,5 @@ function twoSum(nums: number[], target: number): number[] {
     Infinity
   );
 }
+
+console.log(twoSum(nums, target));
