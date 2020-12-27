@@ -21,4 +21,14 @@ describe('FizzBuzz', () => {
     ];
     expect(fizzBuzz(15)).toEqual(expected);
   });
+
+  test('0 error', () => {
+    expect(() => fizzBuzz(1.5)).toThrowError(/^must be integer$/);
+  });
+
+  test('negative number error', () => {
+    expect(() => fizzBuzz(-1)).toThrowError(
+      /^must be positive number greater than 0$/
+    );
+  });
 });
