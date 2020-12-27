@@ -10,5 +10,5 @@ export function isPalindrome(x: number): boolean {
   // array.reverse()はin-placeなので、slice()で新しく配列を生成してから使って比較する。
   const reverse = arr.slice().reverse();
 
-  return !!(arr.join() === reverse.join());
+  return !!(arr.join('') === reverse.join(''));
 }
