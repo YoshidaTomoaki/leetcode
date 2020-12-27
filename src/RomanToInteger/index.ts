@@ -7,12 +7,14 @@
  * result [1,2]
  *
  * [todo]
- * - jestでテスト書く
+ * - jestとコマンドライン実行時で環境変数か何か分ける
+ *
  */
 
-const s: string = process.argv[2];
+// コマンドライン 実行時
+// const s: string = process.argv[2];
 
-function romanToInt(s: string): number {
+export function romanToInt(s: string): number {
   const hashTable = {
     I: 1,
     V: 5,
@@ -33,4 +35,4 @@ function romanToInt(s: string): number {
     .reduce((acc, cur) => acc + cur);
 }
 
-romanToInt(s);
+// romanToInt(s);

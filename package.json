@@ -22,7 +22,7 @@
     "ts-jest": "^26.4.4"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "ts-node": "./node_modules/.bin/ts-node"
   },
   "author": "",
@@ -33,15 +33,15 @@
       "js"
     ],
     "transform": {
-      "**/?(*.)+(spec|test).[jt]s?(x)": "ts-jest"
+      "^.+\\.tsx?$": "ts-jest"
     },
     "globals": {
       "ts-jest": {
-        "tsConfig": "tsconfig.json"
+        "tsconfig": "tsconfig.json"
       }
     },
     "testMatch": [
-      "**/tests/**/*.test.ts"
+      "**/?(*.)+(spec|test).[jt]s?(x)"
     ]
   }
 }
