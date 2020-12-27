@@ -19,24 +19,32 @@ const target: number = parseInt(process.argv[3]);
 
 console.log(twoSum(nums, target));
 
+function flatDeep(arr, d = 1) {
+  return d > 0
+    ? arr.reduce(
+        (acc, val) =>
+          acc.concat(Array.isArray(val) ? flatDeep(val, d - 1) : val),
+        []
+      )
+    : arr.slice();
+}
+
 function twoSum(nums: number[], target: number): number[] {
-  const results = nums
-    .map((num, i) => {
-      return nums
-        .map((_, j) => {
-          // you may not use the same element twice.
-          if (i >= j) return;
+  return flatDeep(
+    nums
+      .map((num, i) => {
+        return nums
+          .map((_, j) => {
+            // you may not use the same element twice.
+            if (i >= j) return;
 
-          if (num + nums[j] !== target) return;
+            if (num + nums[j] !== target) return;
 
-          return [i, j];
-        })
-        .filter((v) => v);
-    })
-    .filter((v) => v.length !== 0);
-
-  const r = [].concat(...results);
-  const r2 = [].concat(...r);
-
-  return r2;
+            return [i, j];
+          })
+          .filter((v) => v);
+      })
+      .filter((v) => v.length !== 0),
+    Infinity
+  );
 }
