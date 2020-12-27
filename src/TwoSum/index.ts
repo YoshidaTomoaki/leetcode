@@ -8,7 +8,6 @@
  *
  * [todo]
  * - コードきれいに書く
- * - eslint+prettier 入れる
  * - jestでテスト書く
  */
 

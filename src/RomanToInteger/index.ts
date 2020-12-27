@@ -3,7 +3,7 @@
  * https://leetcode.com/problems/roman-to-integer/
  *
  * ts-nodeで実行
- * ex: npm run ts-node RomanToInteger.ts.ts III
+ * ex: npm run ts-node RomanToInteger.ts III
  * result [1,2]
  *
  * [todo]
