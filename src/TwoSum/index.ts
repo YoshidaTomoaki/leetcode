@@ -3,7 +3,7 @@
  * https://leetcode.com/problems/two-sum/
  *
  * ts-nodeで実行
- * ex: npm run ts-node TwoSum.ts 3,1,2 3
+ * ex: npm run ts-node ./src/TwoSum 3,1,2 3
  * result [1,2]
  *
  * [todo]
