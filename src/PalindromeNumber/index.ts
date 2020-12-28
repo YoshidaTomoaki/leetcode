@@ -8,7 +8,7 @@
 export function isPalindrome(x: number): boolean {
   const arr = x.toString().split('');
   // array.reverse()はin-placeなので、slice()で新しく配列を生成してから使って比較する。
-  const reverse = arr.slice().reverse();
+  const reverse = [...arr].reverse();
 
   return !!(arr.join('') === reverse.join(''));
 }
