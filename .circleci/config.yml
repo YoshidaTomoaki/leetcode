@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  buildAndTest:
     docker:
       - image: circleci/node:12.19
     working_directory: ~/repo
@@ -8,8 +8,8 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          - v1-dependencies-
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
       - run: npm install
       - save_cache:
           paths:
