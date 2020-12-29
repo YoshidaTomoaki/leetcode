@@ -7,8 +7,7 @@ export function isValid(s: string): boolean {
   // stringが1文字以上で無い場合エラー
   if (s.length < 0) throw new Error('empty string');
 
-  let stack;
-  stack = [];
+  const stack = [];
   const dict = { '(': ')', '{': '}', '[': ']' };
   const arr = s.split('');
 

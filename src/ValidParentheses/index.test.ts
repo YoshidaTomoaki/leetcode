@@ -29,7 +29,7 @@ describe('#ValidPartheses', () => {
     expect(isValid(testString5)).toBe(true);
   });
 
-  test.only('case no.6', () => {
+  test('case no.6', () => {
     expect(isValid(testString6)).toBe(false);
   });
 });
