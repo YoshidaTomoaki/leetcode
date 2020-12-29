@@ -6,6 +6,7 @@ https://leetcode.com/YoshidaTomoaki/
 
 - ts-node
 - jest
+- circleci
 
 - eslint prettier  
   - setting   
