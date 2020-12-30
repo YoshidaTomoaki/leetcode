@@ -68,7 +68,7 @@ function binarySearch(arr, key) {
     }
   }
 
-  return -1;
+  throw new Error('not found key');
 }
 // 第一引数の配列から、第二引数の値のインデックスを発見する
 console.log(binarySearch([1, 2, 3, 4, 5, 6], 3));
