@@ -11,3 +11,12 @@ export function runningSum(nums: number[]): number[] {
     return acc;
   });
 }
+
+function runningSum2(nums: number[]): number[] {
+  return nums.reduce((acc, cur, i) => {
+    acc[i] = (acc[i - 1] ? acc[i - 1] : 0) + cur;
+    return acc;
+  }, []);
+}
+
+console.log(runningSum2([1, 2, 3, 4]));
