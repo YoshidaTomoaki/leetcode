@@ -19,8 +19,7 @@ function shuffle(nums: number[], n: number): number[] {
     })
     .filter((v) => v);
 
-  let r;
-  r = [];
+  const r = [];
 
   for (let i = 0; i < n; i++) {
     r.push(a[i]);
