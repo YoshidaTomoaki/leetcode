@@ -1,7 +1,6 @@
 import { smallerNumbersThanCurrent } from '.';
 
-/*
-describe('#smallerNumbersThanCurrent', () => {
+describe.skip('#smallerNumbersThanCurrent', () => {
   test('case no1', () => {
     expect(smallerNumbersThanCurrent([8, 1, 2, 2, 3])).toBe([4, 0, 1, 1, 3]);
   });
@@ -14,4 +13,3 @@ describe('#smallerNumbersThanCurrent', () => {
     expect(smallerNumbersThanCurrent([7, 7, 7, 7])).toBe([0, 0, 0, 0]);
   });
 });
-*/

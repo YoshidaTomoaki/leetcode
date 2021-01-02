@@ -3,7 +3,7 @@
  * @param s string
  * @param indices number[]
  */
-/*
+
 export function restoreString(s: string, indices: number[]): string {
   const characters = s.split('');
   const r = [];
@@ -18,8 +18,8 @@ export function restoreString(s: string, indices: number[]): string {
 
   return r.join('');
 }
-*/
 
+/*
 export function restoreString(s: string, indices: number[]): string {
   const characters = s.split('');
 
@@ -32,3 +32,4 @@ export function restoreString(s: string, indices: number[]): string {
     })
     .join('');
 }
+*/
