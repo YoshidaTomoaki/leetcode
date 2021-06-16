@@ -1,42 +1,42 @@
-name: release by push tag
 on:
   push:
     tags:
-      - '*'
-  workflow_dispatch:
+      - 'v*'
+
+name: Create Release
 
 jobs:
-  release:
+  build:
+    name: Create Release
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: checkout with node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - name: Checkout code
+        uses: actions/checkout@v2
         with:
-          node-version: 12
+          fetch-depth: 0
 
-      - name: Get version
-        id: get-version
-        run: echo ::set-output name=VERSION::$(echo ${{ github.ref }} | sed -e "s#refs/tags/##g")
+      - name: Get the version
+        id: get_version
+        run: echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/}
 
       - name: Get commit summary
-        id: get-commit-summary
+        id: get_commit_summary
         run: |
           PREVIOUS_TAG=$(git tag --sort=-creatordate | sed -n 2p)
           echo "PREVIOUS_TAG: $PREVIOUS_TAG"
-          COMMIT_SUMMARY="$(git log --oneline --pretty=tformat:"%h %s" $PREVIOUS_TAG..$(echo ${{ github.ref }} | sed -e "s#refs/tags/##g"))"
+          COMMIT_SUMMARY="$(git log --oneline --pretty=tformat:"%h %s" $PREVIOUS_TAG..${{ github.ref }})"
           COMMIT_SUMMARY="${COMMIT_SUMMARY//$'\n'/'%0A'}"
           echo ::set-output name=COMMIT_SUMMARY::$COMMIT_SUMMARY
 
-      - name: Create release
-        id: create-release
+      - name: Create Release
+        id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: $(echo ${{ github.ref }} | sed -e "s#refs/tags/##g")
-          release_name: Release $(echo ${{ github.ref }} | sed -e "s#refs/tags/##g")
+          tag_name: ${{ steps.get_version.outputs.VERSION }}
+          release_name: Release ${{ steps.get_version.outputs.VERSION }}
           body: |
-            ${{ steps.get-commit-summary.outputs.COMMIT_SUMMARY }}
+            ${{ steps.get_commit_summary.outputs.COMMIT_SUMMARY }}
           draft: false
           prerelease: false
