@@ -16,11 +16,11 @@ jobs:
           fetch-depth: 0
 
       - name: Get the version
-        id: get_version
+        id: get-version
         run: echo ::set-output name=VERSION::${GITHUB_REF#refs/tags/}
 
       - name: Get commit summary
-        id: get_commit_summary
+        id: get-commit-summary
         run: |
           PREVIOUS_TAG=$(git tag --sort=-creatordate | sed -n 2p)
           echo "PREVIOUS_TAG: $PREVIOUS_TAG"
@@ -34,9 +34,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ steps.get_version.outputs.VERSION }}
-          release_name: Release ${{ steps.get_version.outputs.VERSION }}
+          tag_name: ${{ steps.get-version.outputs.VERSION }}
+          release_name: Release ${{ steps.get-version.outputs.VERSION }}
           body: |
-            ${{ steps.get_commit_summary.outputs.COMMIT_SUMMARY }}
+            ${{ steps.get-commit-summary.outputs.COMMIT_SUMMARY }}
           draft: false
           prerelease: false
